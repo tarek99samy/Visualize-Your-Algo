@@ -1,2 +1,17 @@
 # Visualize-Your-Algo
-A simple sorting visualizer for some of best algorithms exists for sorting
+
+## Implemented Algorithms
+
+### 1. Merge Sort
+
+### 2. Bubble Sort
+
+### 3. Selection Sort
+
+### 4. Insertion Sort
+
+## Future Work
+
+### - Responsive design implemented purely
+
+### - Implement more existing algorithms

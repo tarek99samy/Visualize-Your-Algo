@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body {
+    background-color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-transform: capitalize;
+    text-decoration: none;
+    background-position: center;
+    color: rgb(255, 228, 109);
+    font-size: medium;
+}
+
+button, select {
+    border-radius: 10px;
+    background-color: black;
+    color: inherit;
+    font-size: inherit;
+    height: 40px;
+}
+
+main {
+    margin-top: 67px;
+    position: relative;
+}
+
+#mainArea {
+    margin-right: -10px;
+}
+
+#toolbar {
+    top: 0;
+    padding-top: 5px;
+    padding-left: 5px;
+    margin-left: -8px;
+    width: 101%;
+    height: 8%;
+    display: block;
+    background-color: rgba(45, 31, 54, 0.199);
+    position: fixed;
+    border-bottom: white solid 3px;
+    z-index: 1;
+}
+
+#sizeLabel {
+    margin-left: 22%;
+    display: inline;
+}
+
+#delayLabel {
+    margin-left: 5%;
+    display: inline;
+}
+
+#SizeSlider, #DelaySlider {
+    display: flexbox;
+    cursor: grabbing;
+}
+
+#currentSize, #currentDelay {
+    display: inline;
+    margin-left: 1%;
+}
+
+#generateArray {
+    position: fixed;
+    width: 250px;
+    cursor: pointer;
+}
+
+#start {
+    position: relative;
+    display: inline-flexbox;
+    left: 19%;
+    width: 120px;
+    cursor: pointer;
+}
+
+#ListOfAlgorithms {
+    right: 3px;
+    display: flexbox;
+    position: fixed;
+}
+
+.bar {
+    width: 7.5px;
+    background-image: linear-gradient(200deg, rgb(12, 4, 97), #00adff);
+    margin: 3px;
+    float: left;
+    border-radius: 5px;
+}

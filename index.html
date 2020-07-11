@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="./icon.png" />
+    <title>Visualize your algo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="GenerateArray(1)">
+    <header>
+        <nav id="toolbar">
+            <button type="button" id="generateArray" onclick="GenerateArray()">Generate new random array</button>
+            <button type="button" id="start" onclick="RunAlgorithm()">Start</button>
+
+            <label for="SizeSlider" id="sizeLabel">
+                2<input type="range" value="100" min="2" max="100" id="SizeSlider" oninput="seekSize()">100
+                <p id="currentSize">Size=100</p></label>
+
+            <label for="DelaySlider" id="delayLabel">
+                5<input type="range" value="5" min="5" max="200" id="DelaySlider" oninput="seekDelay()">200
+                <p id="currentDelay">Delay=5</p></label>
+
+            <select name="ListOfAlgorithms" id="ListOfAlgorithms">
+                <option value="">Choose an algorithm</option>
+                <option value="Merge Sort">Merge Sort</option>
+                <option value="Bubble Sort">Bubble Sort</option>
+                <option value="Selection Sort">Selection Sort</option>
+                <option value="Insertion Sort">Insertion Sort</option>
+            </select>
+        </nav>
+    </header>
+    <main>
+        <div id="mainArea"></div>
+    </main>
+    <script src="./app.js"></script>
+</body>
+
+</html>
