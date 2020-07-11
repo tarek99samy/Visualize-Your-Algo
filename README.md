@@ -1,17 +1,17 @@
 # Visualize-Your-Algo
 
-## Implemented Algorithms
+### Implemented Algorithms
 
-### 1. Merge Sort
+  #### 1. Merge Sort
 
-### 2. Bubble Sort
+  #### 2. Bubble Sort
 
-### 3. Selection Sort
+  #### 3. Selection Sort
 
-### 4. Insertion Sort
+  #### 4. Insertion Sort
 
-## Future Work
+### Future Work
 
-### - Responsive design implemented purely
+#### - Responsive design implemented purely
 
-### - Implement more existing algorithms
+#### - Implement more existing algorithms
