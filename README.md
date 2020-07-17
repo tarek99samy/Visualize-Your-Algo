@@ -3,15 +3,15 @@
 ### Implemented Algorithms
 
   #### 1. Merge Sort
+  
+  #### 2. Heap Sort
 
-  #### 2. Bubble Sort
+  #### 3. Bubble Sort
 
-  #### 3. Selection Sort
+  #### 4. Selection Sort
 
-  #### 4. Insertion Sort
+  #### 5. Insertion Sort
 
 ### Future Work
 
-#### - Responsive design implemented purely
-
-#### - Implement more existing algorithms
+#### - ~~Implement more existing algorithms
