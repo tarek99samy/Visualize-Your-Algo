@@ -14,4 +14,4 @@
 
 ### Future Work
 
-#### - ~~Implement more existing algorithms
+#### - ~~Implement more existing algorithms~~
