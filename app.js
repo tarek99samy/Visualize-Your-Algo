@@ -8,7 +8,7 @@ var size = 100,
 function seekSize() {
   size = +document.getElementById("SizeSlider").value;
   document.getElementById("currentSize").innerHTML = "Size=" + size;
-  GenerateArray(0, 30);
+  GenerateArray(1, 30);
 }
 
 function seekDelay() {
@@ -37,8 +37,16 @@ function GenerateArray(descending = 0, start = 30) {
   DrawArray();
 }
 
-//  modern Fisher – Yates shuffle algorithm
+async function SwapTwoNodes(node1, node2) {
+  let clonedElement1 = node1.cloneNode(true),
+    clonedElement2 = node2.cloneNode(true);
+
+  node2.parentNode.replaceChild(clonedElement1, node2);
+  node1.parentNode.replaceChild(clonedElement2, node1);
+}
+
 function shuffle(array) {
+  //  modern Fisher – Yates shuffle algorithm
   for (let i = array.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
@@ -53,30 +61,20 @@ function pause(DelayTime) {
   });
 }
 
-function ChangeState(state) {
+async function ChangeState(state) {
   document.getElementById("generateArray").disabled = state;
   document.getElementById("start").disabled = state;
   document.getElementById("SizeSlider").disabled = state;
   document.getElementById("DelaySlider").disabled = state;
   document.getElementById("ListOfAlgorithms").disabled = state;
 }
-/******************************** Utils ********************************/
 
 /******************************** Sorting Algorithms ********************************/
 async function merge(lowerBound, middle, upperBound) {
   let i = lowerBound,
     j = middle + 1;
   while (i < j && j <= upperBound) {
-    BarsArray = document.getElementById("mainArea").children;
-    let bar1 = +BarsArray[j].style.height.slice(
-      0,
-      BarsArray[j].style.height.indexOf("p")
-    );
-    let bar2 = +BarsArray[i].style.height.slice(
-      0,
-      BarsArray[i].style.height.indexOf("p")
-    );
-    if (bar1 > bar2) {
+    if (BarsArray[j].offsetHeight > BarsArray[i].offsetHeight) {
       i++;
     } else {
       let tmp = BarsArray[j];
@@ -109,12 +107,12 @@ async function BubbleSort() {
     let newN = 0;
     for (let i = 1; i < N; i++) {
       if (BarsArray[i].offsetHeight < BarsArray[i - 1].offsetHeight) {
-        BarsDiv.insertBefore(BarsArray[i], BarsArray[i - 1]);
+        await SwapTwoNodes(BarsArray[i], BarsArray[i - 1]);
         newN = i;
         await pause(Delay);
       }
     }
-    n = newN;
+    N = newN;
   }
 }
 
@@ -132,7 +130,7 @@ async function SelectionSort() {
         minIndex = j;
       }
     }
-    BarsDiv.insertBefore(BarsArray[minIndex], BarsArray[i]);
+    await SwapTwoNodes(BarsArray[minIndex], BarsArray[i]);
     await pause(Delay);
   }
 }
@@ -148,7 +146,7 @@ async function InsertionSort() {
   while (i < size) {
     let j = i;
     while (j > 0 && BarsArray[j].offsetHeight < BarsArray[j - 1].offsetHeight) {
-      BarsDiv.insertBefore(BarsArray[j], BarsArray[j - 1]);
+      await SwapTwoNodes(BarsArray[j], BarsArray[j - 1]);
       j--;
       await pause(Delay);
     }
@@ -184,20 +182,18 @@ async function heapify(index, size) {
   }
 
   if (largest !== index) {
-    let mn = Math.min(largest, index),
-      mx = Math.max(largest, index);
-    BarsDiv.insertBefore(BarsArray[mx], BarsArray[mn]);
+    await SwapTwoNodes(BarsArray[largest], BarsArray[index]);
     await pause(Delay);
     await heapify(largest, size);
   }
 }
 
 async function HeapSort() {
-  for (let i = size / 2 - 1; i >= 0; i--) {
+  for (let i = Math.floor(size / 2) - 1; i >= 0; i--) {
     await heapify(i, size);
   }
-  for (let i = size - 1; i >= 0; i--) {
-    BarsDiv.insertBefore(BarsArray[i], BarsArray[0]);
+  for (let i = size - 1; i > 0; i--) {
+    await SwapTwoNodes(BarsArray[i], BarsArray[0]);
     await heapify(0, i);
   }
 }
@@ -208,9 +204,7 @@ async function RunHeapSort() {
   await ChangeState(0);
 }
 
-/******************************** Sorting Algorithms and Utils ********************************/
-
-/******************************************* Main Runner **************************************/
+/******************************************* Main **************************************/
 async function RunAlgorithm() {
   let algo = document.getElementById("ListOfAlgorithms").value;
   console.log(algo);
